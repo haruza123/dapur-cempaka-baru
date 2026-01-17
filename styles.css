@@ -1,0 +1,130 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Color System */
+:root {
+  --emerald: #046c4e;
+  --emerald-light: #0e9f6e;
+  --gold: #facc15;
+  --gold-dark: #eab308;
+  --text-dark: #1f2937;
+  --gray-bg: #f9fafb;
+  --white: #ffffff;
+}
+
+/* Base */
+body {
+  font-family: "Segoe UI", system-ui, sans-serif;
+  color: var(--text-dark);
+  line-height: 1.6;
+  background: var(--white);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Header */
+.header {
+  position: sticky;
+  top: 0;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid #eee;
+  z-index: 100;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 0;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 700;
+  color: var(--emerald);
+}
+
+.logo-box {
+  width: 40px;
+  height: 40px;
+  background: var(--emerald);
+  border-radius: 6px;
+}
+
+.nav a {
+  margin-left: 32px;
+  text-decoration: none;
+  color: var(--text-dark);
+  font-weight: 500;
+}
+
+.nav a:hover {
+  color: var(--emerald);
+}
+
+/* Hero */
+.hero {
+  background: linear-gradient(135deg, var(--emerald), var(--emerald-light));
+  color: var(--white);
+  padding: 120px 0;
+  text-align: center;
+}
+
+.since {
+  display: inline-block;
+  margin-bottom: 16px;
+  color: var(--gold);
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.hero h1 {
+  font-size: 42px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.hero h1 span {
+  color: var(--gold);
+}
+
+.hero p {
+  margin-top: 24px;
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 18px;
+  color: #e6fffa;
+}
+
+/* Vision */
+.vision {
+  background: var(--gray-bg);
+  padding: 100px 0;
+}
+
+.vision h2 {
+  text-align: center;
+  font-size: 32px;
+  color: var(--emerald);
+  margin-bottom: 32px;
+}
+
+.vision p {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 18px;
+  color: #4b5563;
+}
