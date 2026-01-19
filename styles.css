@@ -19,9 +19,9 @@ body {
   font-family: Inter, sans-serif;
   color: var(--dark);
   line-height: 1.7;
-  background: radial-gradient(circle at 20% 20%, #e8fff4 0, transparent 35%),
-    radial-gradient(circle at 80% 0%, #fef7d7 0, transparent 30%),
-    var(--gray);
+  background:
+    radial-gradient(circle at 20% 20%, #e8fff4 0, transparent 35%),
+    radial-gradient(circle at 80% 0%, #fef7d7 0, transparent 30%), var(--gray);
   min-height: 100vh;
 }
 
@@ -46,7 +46,7 @@ section {
   letter-spacing: 0.12em;
   font-size: 12px;
   font-weight: 700;
-  color: var(--emerald-light);
+  color: var(--gold);
 }
 
 .lead {
@@ -69,7 +69,10 @@ a {
   padding: 14px 20px;
   font-weight: 700;
   text-decoration: none;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
 }
 
 .btn-primary {
@@ -162,12 +165,30 @@ a {
   width: 0;
   height: 2px;
   background: var(--emerald);
-  transition: width 0.2s ease, left 0.2s ease;
+  transition:
+    width 0.2s ease,
+    left 0.2s ease;
 }
 
 .nav a:hover::after {
   width: 80%;
   left: 10%;
+}
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.nav-toggle span {
+  width: 22px;
+  height: 2px;
+  background: var(--emerald);
+  border-radius: 2px;
 }
 
 /* HERO */
@@ -289,11 +310,8 @@ a {
 
 .hero-card-image {
   height: 240px;
-  background: linear-gradient(
-      135deg,
-      rgba(4, 108, 78, 0.75),
-      rgba(4, 108, 78, 0.55)
-    ),
+  background:
+    linear-gradient(135deg, rgba(4, 108, 78, 0.75), rgba(4, 108, 78, 0.55)),
     url(asset/asset.png);
   background-size: cover;
   background-position: center;
@@ -342,7 +360,7 @@ a {
 }
 .about-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr auto;
   gap: 48px;
   align-items: center;
 }
@@ -431,6 +449,10 @@ a {
   color: var(--emerald);
   font-weight: 600;
   text-decoration: none;
+}
+
+.swipe-hint {
+  display: none;
 }
 
 /* CLIENTS */
@@ -605,22 +627,27 @@ a {
   text-decoration: none;
   font-weight: 600;
 }
-
-/* RESPONSIVE */
-@media (max-width: 1024px) {
+/* =========================
+   RESPONSIVE – TABLET
+========================= */
+@media (max-width: 768px) {
   .header-inner {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: auto 1fr auto;
+    padding-inline: 16px;
     grid-template-areas:
       "logo cta"
       "nav nav";
   }
+
   .logo {
     grid-area: logo;
   }
+
   .nav {
     grid-area: nav;
     justify-content: flex-start;
   }
+
   .btn-nav {
     grid-area: cta;
     justify-self: end;
@@ -635,38 +662,249 @@ a {
   }
 }
 
+/* =========================
+   RESPONSIVE – MOBILE
+========================= */
 @media (max-width: 768px) {
+  /* GLOBAL */
   section {
-    padding: 80px 0;
+    padding: 56px 0;
+  }
+
+  /* HEADER */
+  .header-inner {
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "logo cta"
+      "nav nav";
   }
 
   .nav {
-    gap: 8px;
-  }
-  .nav a {
-    padding: 6px 10px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #fff;
+    flex-direction: column;
+    gap: 0;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    box-shadow: var(--shadow);
+
+    /* keadaan tertutup */
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
+    transition: 0.25s ease;
   }
 
+  .nav-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+    width: 44px;
+    height: 44px;
+    cursor: pointer;
+  }
+
+  .nav-toggle span {
+    width: 20px;
+    height: 2px;
+    background: var(--emerald);
+    border-radius: 2px;
+  }
+
+  .nav a {
+    padding: 14px 24px;
+    width: 100%;
+  }
+
+  .nav.open {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .btn-nav {
+    display: none;
+    padding: 8px 14px;
+    font-size: 14px;
+  }
+
+  /* HERO */
   .hero {
-    padding-top: 140px;
+    padding: 96px 0 56px;
+  }
+
+  .hero-grid {
+    gap: 24px;
+  }
+
+  .hero-text h1 {
+    font-size: 32px;
+  }
+
+  .hero-text h1 span {
+    font-size: 16px;
+  }
+
+  .hero-highlights span {
+    font-size: 12px;
+    padding: 6px 10px;
   }
 
   .hero-actions {
     flex-direction: column;
   }
 
+  .btn-primary,
+  .btn-ghost {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* HERO STATS */
+  .hero-stats {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .hero-stats div {
+    padding: 10px 12px;
+  }
+
+  .hero-stats strong {
+    font-size: 14px;
+  }
+
+  .hero-stats small {
+    font-size: 12px;
+  }
+
+  /* HERO CARD */
+  .hero-card {
+    max-width: 100%;
+    margin-top: 8px;
+  }
+
+  .hero-card-image {
+    height: 140px;
+  }
+
+  .hero-card-body {
+    padding: 14px;
+    font-size: 14px;
+  }
+
+  /* GRID */
   .about-grid,
   .contact-grid.clean {
     grid-template-columns: 1fr;
+    gap: 32px;
   }
 
+  .about-stats {
+    grid-template-columns: 1fr;
+  }
+
+  /* CLIENTS */
   .clients-box {
     grid-template-columns: 1fr;
-    padding: 32px;
+    padding: 24px;
+  }
+
+  /* CONTACT & MAP */
+  .contact-section h2 {
+    margin-bottom: 24px;
   }
 
   .contact-map iframe {
-    height: 360px;
+    height: 260px;
+    border-radius: 16px;
+  }
+
+  /* FLOATING WHATSAPP */
+  .wa-float {
+    right: 16px;
+    bottom: 16px;
+    padding: 12px 16px;
+    font-size: 14px;
+  }
+
+  .hero-text h1,
+  .hero-text h1 span,
+  .hero-actions,
+  .hero-highlights {
+    text-align: center;
+    justify-content: center;
+  }
+
+  /* Tetap kiri untuk teks panjang */
+  .hero-text .lead {
+    text-align: left;
+  }
+
+  .hero-text {
+    text-align: center;
+  }
+
+  .hero-highlights {
+    justify-content: center;
+  }
+
+  .hero-actions {
+    align-items: center;
+  }
+
+  /* //product */
+  .product-grid {
+    display: flex;
+    gap: 16px;
+
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+
+    padding-bottom: 8px;
+  }
+
+  .product-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .product-card {
+    flex: 0 0 80%;
+    scroll-snap-align: start;
+
+    padding: 20px;
+    border-radius: 20px;
+  }
+
+  .product-image {
+    height: 140px;
+    margin-bottom: 12px;
+  }
+
+  .product-card h3 {
+    font-size: 18px;
+    line-height: 1.3;
+  }
+
+  .product-card p {
+    font-size: 14px;
+    line-height: 1.5;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .swipe-hint {
+    display: block;
+    font-size: 12px;
+    opacity: 0.6;
+    text-align: center;
+    margin-bottom: 12px;
   }
 }
-
