@@ -8,6 +8,15 @@
   --border: rgba(4, 108, 78, 0.08);
   --shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
 }
+@font-face {
+  font-family: "Brush Script Std";
+  src:
+    url("font/BrushScriptStd.woff2") format("woff2"),
+    url("font/BrushScriptStd.woff") format("woff");
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
 
 * {
   margin: 0;
@@ -133,6 +142,14 @@ a {
 .logo-img {
   height: 40px;
   width: auto;
+}
+
+.logo span {
+  font-family: "Brush Script Std", cursive;
+  font-size: 30px;
+  font-weight: normal;
+  font-style: italic;
+  letter-spacing: 0.5px;
 }
 
 @media (max-width: 768px) {
@@ -541,7 +558,6 @@ a {
 .product-image img {
   cursor: zoom-in;
 }
-
 
 /* CLIENTS */
 /* CLIENTS – STRONG SECTION */
